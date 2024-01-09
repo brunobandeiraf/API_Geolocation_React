@@ -3,7 +3,7 @@ import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 
 import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
 
-export function NewTransactionModal() {
+export function NewRegion() {
   return (
     //Abrir o modal importado da lib Radix 
     /*  
@@ -16,7 +16,7 @@ export function NewTransactionModal() {
         <Overlay /> 
 
         <Content>
-            <Dialog.Title>Nova Transação</Dialog.Title>
+            <Dialog.Title>Nova Região</Dialog.Title>
 
             <CloseButton>
                 <X size={24} />
@@ -24,19 +24,11 @@ export function NewTransactionModal() {
             </CloseButton>
 
             <form>
-                <input type="text" placeholder="Descrição" required />
-                <input type="number" placeholder="Preço" required />
-                <input type="text" placeholder="Categoria" required />
+                <input type="name" placeholder="Nome" required />
+                <input type="user_id" placeholder="Usuário" required />
 
-                <TransactionType>
-                    {/* value é obrigatório */}
-                    <TransactionTypeButton variant="income" value="income">
-                        <ArrowCircleUp size={24} /> Entrada
-                    </TransactionTypeButton>
-                    <TransactionTypeButton variant="outcome" value="outcome">
-                        <ArrowCircleDown size={24} /> Saída
-                    </TransactionTypeButton>
-                </TransactionType>
+                <input type="latitude" placeholder="latitude" required />
+                <input type="longitude" placeholder="longitude" required />
                 
                 <button type="submit">
                     Cadastrar

@@ -1,9 +1,14 @@
 import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
 import * as Dialog from '@radix-ui/react-dialog';
 
-import { NewTransactionModal } from "../NewTransactionModal";
+import { NewUser } from "../NewUser";
+import { NewRegion } from '../NewRegion';
 
-export function Header() {
+interface HeaderProps {
+  newRegister: 'users' | 'regions';
+}
+
+export function Header({ newRegister }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -12,10 +17,12 @@ export function Header() {
         <Dialog.Root>
           <Dialog.Trigger asChild>
             {/* asChild - aproveita o botão já criado */}
-            <NewTransactionButton>Novo Usuário</NewTransactionButton>
+            <NewTransactionButton>
+              {newRegister === 'users' ? `Novo Usuário` : newRegister === 'regions' ? `Nova Região` : null}
+            </NewTransactionButton>
           </Dialog.Trigger>
 
-          <NewTransactionModal />
+          {newRegister === 'users' ? <NewUser /> : newRegister === 'regions' ? <NewRegion /> : null}
 
         </Dialog.Root>
       </HeaderContent>

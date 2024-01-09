@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Header } from "../../components/Header";
-import { SearchForm } from "./components/SearchForm";
-import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
+import { SearchForm } from "../../components/SearchForm";
+import { TransactionsContainer, TransactionsTable } from "./styles";
 
 import { api } from '../../services/api'
 
-export function Transactions() {
+export function Regions() {
 
   const [userList, setUserList] = useState([]);
 
@@ -31,7 +31,7 @@ export function Transactions() {
 
   return (
     <div>
-      <Header />
+      <Header newRegister="regions" />
 
       <TransactionsContainer>
         <SearchForm />
