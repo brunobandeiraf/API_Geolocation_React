@@ -7,23 +7,21 @@ import { api } from '../../services/api'
 
 export function Regions() {
 
-  const [userList, setUserList] = useState([]);
+  const [regionList, setRegionList] = useState([]);
 
-  // Recuperar a lista de usuário
   useEffect(() => {
     async function fetchUsers() {
       try {
-
-        const response = await api.get('/users', {
+        const response = await api.get('/regions', {
           params: {
             page: 1,
             limit: 10,
           },
         });
-        const users = response.data.rows;
-        setUserList(users);
+        const region = response.data.rows;
+        setRegionList(region);
       } catch (error) {
-        console.error('Error retrieving user list', error);
+        console.error('Error retrieving region list', error);
       }
     }
     fetchUsers();
@@ -39,24 +37,18 @@ export function Regions() {
         <TransactionsTable>
           <tbody>
             {
-              userList.length === 0 ? (
+              regionList.length === 0 ? (
                 <tr>
                   <td>Lista vazia</td>
                 </tr>
               ) : (
-                userList.map((user) => (
-                  <tr key={user}>
+                regionList.map((region) => (
+                  <tr key={region}>
                     <td width="50%">
-                      {user.name}
+                      {region.name}
                     </td>
-                    <td width="25%">
-                      {user.email}
-                    </td>
-                    <td width="25%">
-                      {user.coordinates && user.coordinates.latitude
-                        ? `${user.coordinates.latitude} e ${user.coordinates.longitude}`
-                        : `${user.address.street}, ${user.address.city} - ${user.address.zipCode}`
-                      }
+                    <td width="50%">
+                      {`${region.coordinates.latitude} e ${region.coordinates.longitude}`}
                     </td>
                   </tr>
                 ))

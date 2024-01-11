@@ -29,7 +29,7 @@ export const Content = styled(Dialog.Content)`
         flex-direction: column;
         gap: 1rem;
 
-    input {
+    input, select {
         border-radius: 6px;
         border: 0;
         background: ${props => props.theme["gray-900"]};
